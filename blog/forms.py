@@ -1,9 +1,16 @@
-from django import forms
+from __future__ import absolute_import
 
+from django import forms
 from .models import Post
 
-class PostForm(forms.ModelForm):
 
-    class Meta:
+from ckeditor.fields import RichTextFormField
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+class PostForm(forms.Form):
+ content = forms.CharField(widget=CKEditorUploadingWidget())
+ class Meta:
         model = Post
-        fields = ('title', 'text',)
+        fields = '__all__'
