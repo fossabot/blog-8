@@ -137,3 +137,13 @@ IMAGE_QUALITY = 40
 THUMBNAIL_SIZE = (300, 300)
 
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join(
+            [
+               'youtube',
+            ]
+        ),
+    },
+}
