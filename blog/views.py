@@ -19,9 +19,13 @@ def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
+            data = form.cleaned_data
+            print(data)
+            post = Post(text=data['text'],title=data['title'],
+            facebook=data['facebook'],twitter=data['twitter'],
+            published_date=data['published_date'])
             post.author = request.user
-            post.published_date = timezone.now()
+            post.created_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
