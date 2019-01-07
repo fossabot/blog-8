@@ -1,0 +1,26 @@
+.titleform{
+    width: 60%;
+}
+
+.dateform{
+    width: 60%;
+}
+
+input[name=facebook] {    
+    display: inline-block;
+    height:12.7273px;
+    width:12.7273px;
+}  
+
+input[name=comments] {    
+    display: inline-block;
+    height:12.7273px;
+    width:12.7273px;
+}  
+
+input[name=twitter] {    
+    display: inline-block;
+    height:12.7273px;
+    width:12.7273px;
+}  
+
