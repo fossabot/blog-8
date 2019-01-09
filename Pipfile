@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+django-ckeditor = "*"
+django-bootstrap-datepicker-plus = "*"
+django-widget-tweaks = "*"
+django-session-security = "*"
+pillow = "*"
+whitenoise = "*"
+
+[requires]
+python_version = "3.6"

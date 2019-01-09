@@ -22,5 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
         path('', include('blog.urls')),
-        url(r'^ckeditor/', include('ckeditor_uploader.urls'))
+        url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+        url(r'session_security/', include('session_security.urls'))
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

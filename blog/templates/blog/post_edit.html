@@ -2,7 +2,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h2>Dodaj post:</h2>
+<br>
+<h2 style="color: {{ settings.post_color }}; margin-left: 10%;">Dodaj post:</h2>
     <div class="container container-fluid" style="width: 50%">
         <form method="post" action="./" class="addform">
         {% csrf_token %}
@@ -45,7 +46,10 @@
             {% endif %}
           </div>
         {% endfor %}
-        <p><input type="submit" value="Dodaj"></p>
+        <p>
+            <button   style="margin: auto; display: flex;" class="btn btn-primary" type="submit">Dodaj</button>
+        
+        </p>
     </form>
 </div>
 

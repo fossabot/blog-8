@@ -5,6 +5,14 @@
 .dateform{
     width: 60%;
 }
+.date{
+    width: 80%;
+    margin-left: 4px;
+}
+input[name=title] {    
+    width: 80%;
+    margin-left: 4px;
+}  
 
 input[name=facebook] {    
     display: inline-block;
@@ -23,4 +31,10 @@ input[name=twitter] {
     height:12.7273px;
     width:12.7273px;
 }  
+
+.django-ckeditor-widget{
+    margin: auto;
+    left: auto;
+    text-align: center;
+}
 

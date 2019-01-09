@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+
+
+
+
+<div class="container container-fluid" style="padding: 1rem; " >
+        <a  href="{% url 'about' %}">  Obecna strona o autorze </a>
+        <hr>
+       <div style="margin: auto; display: flex;">
+
+                <form method="post"  style="margin: auto;">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <p>
+                            <button class="btn btn-primary" type="submit" style="margin: auto; display: flex;">Zapisz</button>
+                    
+                    
+                    </p>
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

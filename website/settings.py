@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '4j9fgqqzmud0w3gbo795kwvl@_s_g(%z=)e$st09%8b*8o8n^q'
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -19,13 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4j9fgqqzmud0w3gbo795kwvl@_s_g(%z=)e$st09%8b*8o8n^q'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -41,16 +45,26 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'bootstrap_datepicker_plus',
-    'widget_tweaks'
+    'widget_tweaks',
+    'session_security'
 
 ]
 
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+LOCALE_PATHS = [
+    '/home/kuba/glowing-octo-goggles/locale',
+]
+
+
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
+      'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'session_security.middleware.SessionSecurityMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -73,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'blog.context_processors.settings'
             ],
         },
     },
@@ -114,8 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'pl-pl'
-
+LANGUAGE_CODE = 'pl'
 TIME_ZONE = 'Europe/Warsaw'
 
 USE_I18N = True
@@ -139,10 +153,11 @@ CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 IMAGE_QUALITY = 40
 THUMBNAIL_SIZE = (300, 300)
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -152,5 +167,28 @@ CKEDITOR_CONFIGS = {
                'youtube',
             ]
         ),
+    },
+}
+
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+       'file': {
+           'level': 'DEBUG',
+           'class': 'logging.FileHandler',
+           'filename': 'log.django',
+       },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console','file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
     },
 }
