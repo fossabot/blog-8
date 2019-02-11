@@ -1,4 +1,6 @@
 # 1. Django Blog
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkbchojnacki%2Fblog.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkbchojnacki%2Fblog?ref=badge_shield)
+
 
 
 + [1. Django Blog](#1-django-blog)
@@ -252,3 +254,7 @@ custom_css - text - własny styl css
 ```
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkbchojnacki%2Fblog.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkbchojnacki%2Fblog?ref=badge_large)
